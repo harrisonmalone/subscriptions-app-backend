@@ -1,5 +1,5 @@
 Subscription.create(
-  name: "netflix",
+  name: "Netflix",
   price_per_month: "14",
-  billing_date: "monthly"
+  billing_period: "monthly"
 )
