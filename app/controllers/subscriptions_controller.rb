@@ -1,9 +1,10 @@
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_subscription, only: [:show, :destroy, :update]
 
   def index 
     # send all of the subscriptions back
-    subscriptions = Subscription.all
+    subscriptions = current_user.subscriptions
     render json: subscriptions
   end
 
@@ -15,6 +16,7 @@ class SubscriptionsController < ApplicationController
   def create 
     # create a new subscription
     subscription = Subscription.new(subscriptions_params)
+    subscription.user_id = current_user.id
     subscription.capitalize_name
     if subscription.save
       render status: :created 
