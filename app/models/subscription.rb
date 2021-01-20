@@ -2,6 +2,7 @@ class Subscription < ApplicationRecord
   validates :name, presence: true
   validates :price_per_month, presence: true
   validates :billing_period, presence: true
+  belongs_to :user
 
   def capitalize_name
     capitalized_words = name.split(" ").map do |word|
